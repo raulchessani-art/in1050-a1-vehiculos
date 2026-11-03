@@ -50,16 +50,17 @@ flowchart LR
 
 ## 7. Infraestructura
 
-El cálculo de memoria mínima en punto flotante de media precisión ($\text{FP16}$, $2\ \text{bytes}$ por parámetro) para cargar los pesos del modelo en memoria es:
+Tomando como referencia los aproximadamente $19,000,000$ de parámetros declarados en la [Model Card](https://huggingface.co/Jordo23/vehicle-classifier), la memoria estimada para almacenar únicamente los pesos en punto flotante de media precisión ($\text{FP16}$, $2\ \text{bytes}$ por parámetro) es:
 
 $$
-\text{Memoria mínima} = 19,000,000\ \text{parámetros} \times 2\ \text{bytes} = 38,000,000\ \text{bytes} \approx 38\ \text{MB}
+\text{Memoria de los pesos} = 19,000,000\ \text{parámetros} \times 2\ \text{bytes} = 38,000,000\ \text{bytes} \approx 38\ \text{MB}
 $$
 
-*(Nota: Incluso en precisión simple $\text{FP32}$ a $4\ \text{bytes}$ por parámetro, el modelo requiere apenas $\approx 76\ \text{MB}$ en RAM/VRAM, con un archivo de checkpoint completo en PyTorch de $130\ \text{MB}$)._
+En precisión simple ($\text{FP32}$, $4\ \text{bytes}$ por parámetro), la misma estimación corresponde a aproximadamente $76\ \text{MB}$ para los pesos. Estas cifras no representan toda la RAM o VRAM necesaria para ejecutar el modelo: también se requiere memoria para las imágenes de entrada, las activaciones intermedias y el entorno de ejecución. El tamaño del checkpoint en disco es una medida distinta.
 
-* **Dónde correrá el modelo:** **Google Colab con GPU** (entorno en la nube con acelerador NVIDIA Tesla T4).
-* **Por qué:** Al requerir únicamente $\approx 38\ \text{MB}$ de memoria base para sus parámetros, el modelo se ejecuta con holgura dentro de los recursos gratuitos de Google Colab ($15\ \text{GB}$ de VRAM en GPU T4 y $12.7\ \text{GB}$ de RAM). Elegimos Google Colab con GPU porque permite realizar inferencias en milisegundos sin exigir que las computadoras portátiles del equipo o de los agentes de seguros cuenten con tarjeta gráfica dedicada, además de facilitar el trabajo colaborativo del equipo en un entorno reproducible de Python con PyTorch (`timm`) y `huggingface_hub`.
+* **Dónde correrá el modelo:** Se propone Google Colab con GPU para el prototipo académico.
+* **Por qué:** Permite trabajar en un cuaderno compartido con Python, PyTorch, `timm` y `huggingface_hub`, sin exigir una GPU dedicada en las computadoras del equipo. Antes de evaluar el prototipo, se registrarán el acelerador y los recursos de la sesión.
+* **Validación pendiente:** En el Parcial III se medirá el uso máximo de memoria y el tiempo de inferencia, documentando el hardware, la precisión utilizada y el tamaño del lote. Los $38\ \text{MB}$ son una estimación de los pesos en FP16; todavía no se ha medido el consumo total ni la velocidad del prototipo.
 
 ## 8. Riesgo ético
 
@@ -94,3 +95,4 @@ Lista de tareas que el equipo desarrollará durante el **Parcial III**:
 4. **Asociación Mexicana de Instituciones de Seguros (AMIS).** (2025). *Centro Estadístico del Sector Asegurador y Reportes de Siniestralidad de Autos*. [https://centroestadisticoamis.mx/](https://centroestadisticoamis.mx/)
 5. **Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF).** (2025). *Guía y supervisión de Seguros de Automóvil en México*. [https://www.condusef.gob.mx/](https://www.condusef.gob.mx/)
 6. **Universidad Iberoamericana León.** (2025). *Reflexionan en Ibero León sobre Inteligencia Artificial y Humanismo a partir de la encíclica Magnifica Humanitas*. [https://www.iberoleon.mx/articulo/reflexionan-en-ibero-leon-sobre-inteligencia-artificial-y-humanismo-a-partir-de-la-enciclica-magnifica-humanitas-1780438257](https://www.iberoleon.mx/articulo/reflexionan-en-ibero-leon-sobre-inteligencia-artificial-y-humanismo-a-partir-de-la-enciclica-magnifica-humanitas-1780438257)
+
