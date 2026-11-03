@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter Notebook / Google Colab
+.ipynb_checkpoints/
+
+# Pesos de modelos y checkpoints locales pesados
+*.pth
+*.onnx
+*.pt
+*.bin
+*.safetensors
+
+# Variables de entorno y credenciales
+.env
+.env.local
+
+# Archivos de sistema operativo y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,8 +1,7 @@
-Rol en el proyecto: documentación y diagramas. - Cristopher Cortés
+# Cristopher Cortés
 
-
-
-
-
-Me encargo de mantener el README del clasificador de vehículos, documentar el modelo y sus limitaciones, y actualizar el diagrama Mermaid del funcionamiento del proyecto.
-
+* **Rol en el proyecto:** Documentación técnica, evaluación de limitaciones y diseño de diagramas.
+* **Responsabilidades:**
+  * Mantenimiento de la portada (`README.md`) del clasificador de vehículos **CHESSCAR**.
+  * Documentación de la ficha técnica del modelo abierto (`Jordo23/vehicle-classifier`), sus métricas de desempeño y limitaciones declaradas en la *Model Card*.
+  * Elaboración y actualización de los diagramas de flujo en Mermaid para representar la arquitectura del sistema.
